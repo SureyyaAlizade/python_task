@@ -1,0 +1,224 @@
+#Lab functions
+# Lab 5 -> Functions
+#1
+def sum():
+    sum=0
+    while True:
+        a=int(input("Enter num: "))
+        if a==-1:
+            break
+        sum+=a
+    return 'even' if sum%2==0 else 'odd'
+print(sum())
+                             
+
+#2
+def f(a,b):
+   return "True" if (a//b)%2==0 else "False"
+a,b=map(float,input().split())
+print(f(a,b))
+
+#3
+def exp(n,k):
+    if n==k**k:
+        return True
+    else: return False
+n,k=map(float,input('Enter values: ').split())
+print(exp(n,k))
+
+#4
+def pronic(x):
+    n=0
+    while n*(n+1)<=x:
+        if n*(n+1)==x:
+            return 'pronic'
+        else: return 'heteromecic'
+x=int(input('Enter num: '))
+print(pronic(x))
+    
+    
+#5
+def length(a):
+    length=0
+    while a>0:
+        a=a//10
+        length+=1
+    return length
+num=int(input('Enter num: '))
+print(length(num))
+
+#6
+def disarium(x):
+    s=0;y=x
+    while x>0:
+        s+=(x%10)**2
+        x=x//10
+    if y==s:
+        return 'Disarium'
+    else: return 'Not disarium'
+
+x=int(input('Enter num: '))
+print(disarium(x))
+
+#7
+
+def curzon(x):
+    a=2**x+1
+    b=2*x+1
+    if a%b==0:
+        return 'Curzon'
+    else: return "Not curzon"
+
+x=int(input('Enter num: '))
+print(curzon(x))
+
+#8
+def fact(a):
+    p=1
+    for i in range(1,a+1):
+        p*=i
+    return(p)
+
+def kempner(x):
+    k=1
+    while True:
+        if fact(k)%x==0:
+            return k
+        k+=1
+
+num=int(input('Enter num: '))
+print(f"{kempner(num)}!")
+
+#9
+
+def sum_digit(x):
+    s=0
+    while x>0:
+        s+=x%10
+        x=x//10
+    return s
+
+def prime(x):
+        if x<2:
+            return False
+        for i in range(2,x):
+            if x%i==0:
+                return False
+        return True
+        
+
+num=int(input('Enter num: '))
+if num%sum_digit(num)==0 and prime(num//sum_digit(num)):
+    print('Moran')
+else: print('Not moran')
+
+#10
+
+def first(x):
+    while x>10:
+        x=x//10
+    return x
+
+num=int(input('Enter num: '))
+if (first(num)+num%10)**(1/2)>3:
+    print(True)
+else: print(False)
+
+
+#11
+
+def prime(x,y):
+    while x!=y:
+        if x>y:
+            x=x-y
+        else: y=y-x
+    if x==1:
+        return True
+    else: return False
+    
+x,y=map(int,input('Enter numbers: ').split())
+print(prime(x,y))
+
+#12
+def prime(x):
+        if x<2:
+            return False
+        for i in range(2,x):
+            if x%i==0:
+                return False
+        return True
+
+x=int(input('Enter value: '))
+hyper= True
+while x>0:
+    if not prime(x):
+        hyper=False
+        break
+    x//=10
+if hyper:
+    print('Hyper-Prime')
+else: print('Not hyper-prime')
+
+#13
+def ebob(a,b):
+    while b!=0:
+        a,b=b,a%b
+    return a
+
+def ekob(a,b):
+    k=1
+    while True:
+        if k%a==0 and k%b==0:
+            break
+        else: k+=1
+    return k
+
+x,y=map(int,input("enter digits: ").split())
+print(f'Ebob={ebob(x,y)}')
+print(f'Ekob={ekob(x,y)}')
+
+#14
+
+def function(x,y,z):
+    if x>y:
+        x,y=y,x
+    if x>z:
+        x,z=z,x
+    if y>z:
+        y,z=z,y
+    return x,y,z
+
+x,y,z=map(int,input('Enter digits: ').split())
+print(function(x,y,z))
+
+#15
+def ebob(x,y):
+    while x!=0:
+        y,x=x,y%x
+    return y
+
+M,N=map(int,input('Enter values (M/N): ').split())
+print(f"{int(M/ebob(M,N))}/{int(N/ebob(M,N))}")
+
+#16
+def reverse_num(x):
+    reverse=0
+    while x>0:
+        reverse=reverse*10+x%10
+        x=x//10
+    return reverse
+
+x=int(input('Enter num: '))
+print(reverse_num(x))
+
+
+
+
+
+
+
+
+
+
+
+
