@@ -1,0 +1,146 @@
+#1
+
+def collatz():
+    x=int(input('Enter a number: '))
+    y=x
+    print(x)
+    while True:
+        if x==1:
+             break
+        elif x%2==0:
+             x=x//2
+             print(x, end='\t')
+        else:
+              x=x*3+1
+              print(x, end='\t')
+              if x>y:
+              max1=x
+    print(f'Max: {max1}')
+collatz()
+
+
+
+        
+#2
+
+
+def len1(x):
+    s=0
+    while x>0:
+        x=x//10
+        s+=1
+    return s
+
+def f(x):
+    s=0
+    while x>0:
+        s=s+(x%10)*len1(x)
+        x=x//10
+
+def reverse_num(x):
+    a=0
+    while x>0:
+        a=10*a+x%10
+        x=x//10
+    return reverse_num
+a=int(input('Enter number: '))
+b=reverse_num(a)
+if f(a)==f(b):
+    print('True')
+else: print('False')
+
+    
+
+
+
+#3
+def len1(x):
+    s=0
+    while x>0:
+        x=x//10
+        s+=1
+    return s
+
+
+def a(x):
+    s=''
+    b=x%10
+    c=x//10
+    c=str(c)*b
+    return int(c)
+
+
+def f(x):
+    s=0
+    b=''
+    while x>0:
+        t=x%100
+        x=x//100
+        t=a(t)
+        b=str(t)+b
+    return int(b)
+
+        
+a=int(input())
+if len1(a)%2==1:
+    print('Invalid')
+
+    
+else: print(f(a))
+
+#4
+def reverse_num(x):
+    a=0
+    while x>0:
+        a=10*a+x%10
+        x=x//10
+    return reverse_num
+
+def palindrome(x):
+    if x==reverse_num(x):
+        return True
+    else: return False
+
+def binary(x):
+    a=''
+    while x>0:
+        a=str(x%2)+a
+        x=x//10
+    a=int(a)
+    return a
+
+num=int(input('Enter num: '))
+print('Decimal:',num)
+print('Binary:',binary(num))
+if palindrome(num) and palindrome(binary(num)):
+    print('Both is palindrome')
+elif palindrome(num) and not palindrome(binary(num)):
+    print('Only decimal is palindrome')
+elif not palindrome(num) and  palindrome(binary(num)):
+    print('Only binary is palindrome')
+else: print('None is palindrome
+
+#5
+n,p=map(int,input('Enter (n,p): ').split())
+
+def len_num(x):
+    s=0
+    while x>0:
+        s+=1
+        x=x//10
+    return s
+
+def function(x):
+    s=0;t=x
+    while x>0:
+        s=s+(x%10)**(p+len_num(x))
+        x=x//10
+    if s%n==0:
+        return k
+    else: return 'None'
+
+print(f'k={function(n)}')
+
+    
+        
+
