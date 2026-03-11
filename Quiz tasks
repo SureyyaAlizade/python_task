@@ -1,0 +1,202 @@
+'''
+#Task 1
+
+def perfect_num(x):
+    num=0
+    for i in range(1,x):
+        if x%i==0:
+            num+=i
+    if num==x:
+        return True
+    else: return False
+
+a=int(input('Enter start: '))
+b=int(input('Enter stop: '))
+total=0
+for i in range(a,b+1):
+    if perfect_num(i):
+        total+=1
+        print()
+        print('Perfect num found:',i)
+        print('Divisors: ')
+        for p in range(1,i):
+            if i%p==0:
+                print(p,end=' ')
+print()
+print('Total found: ',total)
+
+
+#Task 2
+
+def sum_digits(x):
+    sum1=0
+    while x>0:
+        sum1+=x%10
+        x=x//10
+    return sum1
+
+def harshad_chain(x):
+    step=0
+    while x!=1:
+        if x%sum_digits(x)!=0:
+            return 0
+        else:
+            step+=1
+            original=x
+            x=x//sum_digits(x)
+            print(f'Step {step}: {original}/{sum_digits(original)}={original//sum_digits(original)}')
+    return f"Total step: {step}"
+number=int(input('Enter number: '))
+print(harshad_chain(number))
+
+
+#Task 3
+def max_digit(x):
+    max1=x%10
+    while x>0:
+        t=x%10
+        x=x//10
+        if max1<t:
+            max1=t
+    return max1
+
+def count_binary(x):
+    binary=0
+    bin_digits=1
+    while x>0:
+        num=x%2
+        binary+=bin_digits*num
+        bin_digits*=10
+        x=x//2
+    one_count=0
+    while binary>0:
+        a=binary%10
+        if a==1:
+            one_count+=1
+        binary=binary//10
+    return one_count
+
+def is_dominant(x):
+    if max_digit(x)==count_binary(x):
+        return True
+    else: return False
+
+number=int(input('Enter a number (N>0): '))
+print(f'Max digit: {max_digit(number)}')
+print(f'Binary ones count: {count_binary(number)}')
+
+if is_dominant(number):
+    print(f'Result: True. It is dominat trip')
+else: print(f'Result: False. It is not dominant trip')
+
+#Task 4 
+
+
+def rotate_num(x):
+    length=0
+    a=x
+    while a>0:
+        length+=1
+        a=a//10
+    rotate=x//10+(x%10)*10**(length-1)
+    return rotate
+
+def bin_weight(x):
+    binary=0
+    bin_digits=1
+    while x>0:
+        num=x%2
+        binary+=bin_digits*num
+        bin_digits*=10
+        x=x//2
+    one_count=0
+    while binary>0:
+        a=binary%10
+        if a==1:
+            one_count+=1
+        binary=binary//10
+    if one_count%2==0:
+        return 2
+    elif one_count%2==1:
+        return 1
+    else: return 0
+
+
+    
+def prime(x):
+    if x<2:
+        return False
+    count=0
+    for i in range(2,x):
+        if x%i==0:
+            count+=1
+    if count!=0:
+        return False
+    else:return True
+
+def perfect_num(x):
+    num=0
+    for i in range(1,x):
+        if x%i==0:
+            num+=i
+    if num==x:
+        return True
+    else: return False
+    
+
+      
+def analyze(x):
+    if prime(x) and prime(rotate_num(x)):
+        return 'Kateqoriya A'
+    elif not prime(x) and bin_weight(x)==2:
+        return 'Kateqoriya B'
+    elif perfect_num(x):
+        return 'Kateqoriya C'
+    else: return'None found'
+
+N=int(input('Enter value:'))
+print('Original:',N)
+print('Rotated:',rotate_num(N))
+print('Bin weight type: ',bin_weight(N))
+print(analyze(N))
+   
+#Task 5 
+
+def factorial(x):
+    p=1
+    for i in range(1,x+1):
+        p=p*i
+    return p
+
+def fact(x):
+    sum1=0
+    while x>0:
+        a=x%10
+        sum1+=factorial(a)
+        x=x//10
+    return sum1
+
+def square(x):
+    sum2=0
+    while x>0:
+        a=x%10
+        sum2+=a*a
+        x=x//10
+    return sum2
+    
+
+def happy_num(x):
+    while x!=1:
+        x=square(x)
+        if x==4:
+            return False
+    return True
+
+N=int(input('Enter N: '))
+print('Sum of factorials:',fact(N))
+if happy_num(N):
+    print("Happy?:",True)
+else: print("Happy?:",False)   
+'''
+
+
