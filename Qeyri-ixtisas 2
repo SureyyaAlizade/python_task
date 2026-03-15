@@ -1,0 +1,173 @@
+#Qeyri ixtisas 2
+#Task 1
+'''
+from math import *
+
+x= float(input('Enter value x: '))
+y= float(input('Enter value y: '))
+
+if x>=0 and y>=0 and x**2+y**2<=30 and y>=sin(x) and y<=2*x-3:
+    print('Within the area')
+
+elif x**2+y**2<=30 and y<=sin(x) and y>=2*x-3 and y>=-3 and x>=-5:
+    print('Within the area')
+
+else: print('Outside the area')
+
+
+
+#Task 2
+
+def prime(x):
+    
+    if x<2:
+        return False
+
+    elif x==2:
+        return True
+    
+    else:
+        for i in range(2,x):
+            if x%i==0:
+                return False
+
+    return True
+
+n=int(input('How many nums?: '))
+
+prime_sum=0
+
+for i in range(n):
+    num=int(input(f'Enter num {i+1}:'))
+
+    if prime(num):
+        print(f'{num} is prime, added')
+        prime_sum+=num
+
+    else:
+        print(f'{num} is not prime, was not added')
+        break
+
+print(f'Total: {prime_sum}')
+
+
+
+#Task 3
+
+
+N = int(input('Enter a number: '))
+
+def sum_digit(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+steps = 0
+
+if N >= 10:
+
+    while sum_digit(N) >= 10:
+        steps += 1
+        print(f'Step {steps}: {sum_digit(N)} ')
+        N = sum_digit(N)
+
+    steps += 1
+    print(f'Step {steps}:{sum_digit(N)} ')
+
+    print(f'Digital root: {sum_digit(N)}')
+    print(f'Total steps: {steps}')
+    
+   
+
+#Task 4
+
+def length(x):
+
+    length=0
+    while x>0:
+        length+=1
+        x//=10
+
+    return length
+
+def arms(x):
+
+    arms=0
+    original=x
+    
+    while x>0:
+        digit=x%10
+        arms+=digit**length(original)
+        x=x//10
+
+    if arms==original:
+        return True
+    else: return False
+
+start=int(input('Enter start: '))
+stop=int(input('Enter stop: '))
+
+count_arms=0
+
+for i in range(start, stop+1):
+    
+    if arms(i):
+        print(f'Found: {i} (length={length(i)})')
+        count_arms+=1
+
+print(f'Total found: {count_arms}')
+
+#Task 5
+def count_binary(x):
+
+    binary=0
+    bin_digits=1
+    
+    while x>0:
+        
+        num=x%2
+        binary+=bin_digits*num
+        bin_digits*=10
+        x=x//2
+        
+    one_count=0
+    
+    while binary>0:
+        
+        a=binary%10
+        if a==1:
+            one_count+=1
+        binary=binary//10
+        
+    return one_count
+
+
+def octal_digit(x):
+    
+    octal=0
+    octal_digits=1
+    
+    while x>0:
+        
+        num=x%8
+        octal+=octal_digits*num
+        octal_digits*=10
+        x=x//8
+
+    length=0
+
+    while octal>0:
+        length+=1
+        octal//=10
+
+    return length
+    
+Number=int(input('Enter num: '))
+
+if count_binary(Number)==octal_digit(Number):
+    print('Balanced')
+
+else: print('Not balanced')
+'''
