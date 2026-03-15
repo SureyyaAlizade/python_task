@@ -1,0 +1,279 @@
+# Qeyri-ixtisas 1
+#Task 1
+'''
+x=float(input('Enter x: '))
+y=float(input('Enter y: '))
+print(f'Coordinates: ({x},{y})')
+    
+if x**2+y**2<=1 and y>=abs(2*x) and y>=6*x**2 and y>=0.5:
+    print('Within the area')
+
+else: print('Outside the area')
+
+#Task 2
+
+def prime(x):
+
+    if x<2:
+        return False
+
+    elif x==2:
+        return True
+    
+    else:
+        for i in range(2,x):
+            if x%i==0:
+                return False
+
+    return True
+
+total_sum=0
+
+while True:
+    num=int(input('Enter a number: '))
+    if prime(num):
+        print(f'({num} is prime, continue...)')
+        total_sum+=num
+
+    else:
+        print(f'({num} is not prime, we stop!...)')
+        break
+
+print(f'Total sum of primes: {total_sum}')
+
+
+
+#Task 3
+
+N = int(input('Enter a number: '))
+
+def sum_digit(n):
+    s = 0
+    while n > 0:
+        s += n % 10
+        n //= 10
+    return s
+
+
+def sums(n):
+    original = n
+
+    div = 1
+    while n // div >= 10:
+        div *= 10
+
+    while div > 0:
+        digit = n // div
+        print(digit, end='')
+        n = n % div
+        div //= 10
+
+        if div > 0:
+            print(' + ', end='')
+
+    print(f' = {sum_digit(original)}')
+
+
+steps = 0
+
+if N >= 10:
+
+    while sum_digit(N) >= 10:
+        steps += 1
+        print(f'Step {steps}: ', end='')
+        sums(N)
+        N = sum_digit(N)
+
+    steps += 1
+    print(f'Step {steps}: ', end='')
+    sums(N)
+
+    print(f'Digital root: {sum_digit(N)}')
+    print(f'Total steps: {steps}')
+
+else:
+    print('The length is already 1')
+
+
+
+
+#Task 4
+
+def count_binary(x):
+
+    binary=0
+    bin_digits=1
+    
+    while x>0:
+    
+        num=x%2
+        binary+=bin_digits*num
+        bin_digits*=10
+        x=x//2
+        
+    one_count=0
+    
+    while binary>0:
+    
+        a=binary%10
+        
+        if a==1:
+            one_count+=1
+            
+        binary=binary//10
+        
+    return one_count
+
+num=int(input('Enter number: '))
+a=num%10
+b=count_binary(num)
+
+print(f'Last digit: {a}')
+
+print(f'Bin ones count: {b}')
+
+if a==b:
+    print('Result: True')
+
+else: print('Result: False')
+
+
+
+#Task 5
+
+def sum_digit(n):
+    
+    s = 0
+    
+    while n > 0:
+        s += n % 10
+        n //= 10
+        
+    return s
+
+def prime(x):
+    
+    if x<2:
+        return False
+
+    elif x==2:
+        return True
+    
+    else:
+        for i in range(2,x):
+            if x%i==0:
+                return False
+
+    return True
+
+def count_binary(x):
+
+    binary=0
+    bin_digits=1
+    
+    while x>0:
+        
+        num=x%2
+        binary+=bin_digits*num
+        bin_digits*=10
+        x=x//2
+        
+    one_count=0
+    
+    while binary>0:
+        
+        a=binary%10
+        if a==1:
+            one_count+=1
+        binary=binary//10
+        
+    return one_count
+
+Number=int(input('Enter a num: '))
+
+print('------------Analysis-----------')
+
+if prime(Number):
+    if count_binary(Number)%2==1:
+         print('Level 1')
+    
+elif sum_digits(Number)%5==0:
+    print('Level 2')
+
+elif count_binary(Number)>3:
+    print('Level 3')
+
+else: print('NO level')
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
