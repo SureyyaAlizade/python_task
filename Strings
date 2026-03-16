@@ -139,3 +139,39 @@ for word in sent:
 
 b=" ".join(a)
 print(b)   
+
+#Task 13
+
+def length(s):
+    count = 0
+    for ch in s:
+        count += 1
+    return count
+
+def separator(x):
+    a = []
+    word = ''
+
+    for i in range(length(x)):
+        if x[i] != '+':
+            word += x[i]
+        else:
+            if word != '+':
+                a.append(word)
+                word = ''
+
+    if word != '+':
+        a.append(word)
+
+    return a
+    
+problem=input('Enter the problem: ')
+problem=separator(problem)
+
+sums=0
+
+for i in problem:
+    sums+=int(i)
+
+print(sums)
+
