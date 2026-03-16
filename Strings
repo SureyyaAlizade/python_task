@@ -94,3 +94,48 @@ for i in range(len(sent)):
 
 print(" ".join(sent))
 
+#Task 11
+
+def length(s):
+    count = 0
+    for ch in s:
+        count += 1
+    return count
+
+
+def deleter(x):
+   
+    result=''
+    for i in range(len(x)):
+        if i ==1:
+            continue
+        result+=x[i]
+    return result
+   
+def separate(x):
+    a = []
+    word = ''
+
+    for i in range(length(x)):
+        if x[i] != ' ':
+            word += x[i]
+        else:
+            if word != '':
+                a.append(word)
+                word = ''
+
+    if word != '':
+        a.append(word)
+
+    return a
+
+sent=input('Enter a sentence: ')
+sent=separate(sent)
+a=[]
+
+for word in sent:
+    new_word=deleter(word)
+    a+=[new_word]
+
+b=" ".join(a)
+print(b)   
