@@ -27,3 +27,33 @@ while i<length(a):
         i+=1
 
 print(final)
+
+#Task 8
+#Daxil edilmis cumlede verilmis simvollari sayin
+
+a=input('Enter sybols:')
+b=input('Neyi sayiriq: ')
+
+
+def length(s):
+    
+    count=0
+
+    for ch in s:
+        count+=1
+
+    return count
+
+i=0
+count=0
+
+while i<length(a):
+
+    if a[i:i+length(b)]==b:
+        count+=1
+        i+=length(b)
+
+    else:
+        i+=1
+
+print(count)
