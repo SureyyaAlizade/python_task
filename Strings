@@ -16,7 +16,7 @@ def length(s):
 final=''
 i=0
 
-while i<length(a):
+while i<=length(a)-length(b):
 
     if a[i:i+length(b)]==b:
         final+=c
@@ -47,7 +47,7 @@ def length(s):
 i=0
 count=0
 
-while i<length(a):
+while i<=length(a)-length(b):
 
     if a[i:i+length(b)]==b:
         count+=1
