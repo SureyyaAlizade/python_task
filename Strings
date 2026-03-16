@@ -1,0 +1,29 @@
+#Strings
+#7.	Sətirdə bir simvollar ardıcıllığını digər ardıcıllıq ilə əvəzləyən proqram tərtib edin.
+a=input('Enter sybols:')
+b=input('Neyi evezleyirik: ')
+c=input('Ne ile evezleyirik: ')
+
+def length(s):
+    
+    count=0
+
+    for ch in s:
+        count+=1
+
+    return count
+
+final=''
+i=0
+
+while i<length(a):
+
+    if a[i:i+length(b)]==b:
+        final+=c
+        i+=length(b)
+
+    else:
+        final+=a[i]
+        i+=1
+
+print(final)
