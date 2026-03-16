@@ -57,3 +57,40 @@ while i<=length(a)-length(b):
         i+=1
 
 print(count)
+
+# Task 9
+def length(s):
+    count = 0
+    for ch in s:
+        count += 1
+    return count
+
+
+def separate(x):
+    a = []
+    word = ''
+
+    for i in range(length(x)):
+        if x[i] != ' ':
+            word += x[i]
+        else:
+            if word != '':
+                a.append(word)
+                word = ''
+
+    if word != '':
+        a.append(word)
+
+    return a
+
+
+sent = input('Enter sentence: ')
+
+sent = separate(sent)
+
+for i in range(len(sent)):
+    if sent[i] == 'bayram' or sent[i] == 'Bayram':
+        sent[i] = 'Novruz'
+
+print(" ".join(sent))
+
