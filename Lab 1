@@ -1,0 +1,291 @@
+#Lab 1
+#Simple programs, calculations
+'''
+#Task 1 --> x^y
+def digit(x):    
+    x=str(x)
+    if x=="":
+        return False
+    
+    for s in x:
+        if s<'0' or s>'9':
+            return False
+
+    return True
+    
+num=input('Enter value: ')
+power=input('Enter exp value: ')
+
+if digit(num) and digit(power):
+    num=int(num)
+    power=int(power)
+    result=num**power
+    print(f'{num}^{power}={result}')
+
+else: print("Enter valid data")
+
+#Task 2
+def is_positive_float(x):  # checks if float
+
+    if x=="":
+        return False
+
+    if x[0]=='0':
+        return False
+
+    count=0
+    for symbol in x:
+        
+        if symbol=='.':
+            count+=1
+            if count>1:
+                return False
+            
+        elif symbol<"0" or symbol>="9":
+            return False
+
+    return True
+        
+Width=input('Enter width: ')
+Height=input('Enter height: ')
+
+if is_positive_float(Width) and is_positive_float(Height):
+    Width=float(Width) ; Height=float(Height)
+    Area=Width*Height
+    print(f"The area is: {Area} ")
+
+else: print('Enter valid data')
+
+
+#Task 3
+
+def f(x):
+    if x=='':
+        return False
+
+    if x[0]=='0':
+        return False
+
+    count=0
+    for i in x:
+        if i=='.':
+            count+=1
+            if count>1:
+                return False
+        elif i<'0' or i>'9':
+            return False
+
+    return True
+
+a=input('Enter parameter a: ')
+b=input('Enter parameter b: ')
+c=input('Enter parameter c: ')
+
+if f(a) and f(b) and f(c):
+    a,b,c=float(a),float(b),float(c)
+    V=a*b*c
+    S=2*(a*b+a*c+b*c)
+    print(f'Area={S}')
+    print(f'Volume={V}')
+    
+else: print('Enter valid input')
+
+
+#Task 4
+
+def f(x):
+    if x=='':
+        return False
+
+    if x[0]=='0':
+        return False
+
+    count=0
+
+    for i in x:
+        if i=='.':
+            count+=1
+            if count>1:
+                return False
+
+        elif i<'0' or i>'9':
+            return False
+
+    return True
+
+from math import*
+
+r=input('Enter the radius: ')
+h=input('Enter the height: ')
+
+if f(r) and f(h):
+    
+    r,h=float(r),float(h)
+    V=pi*r**2*h
+    print(f'Volume is: {V:.2f}')
+
+else: print('Enter valid data')
+
+
+#Task 5
+
+def f(x):
+
+    if x=='':
+        return False
+    
+    if x[0]=='0':
+        return False
+
+    count=0
+    for i in x:
+        if i=='.':
+            count+=1
+            if count>1:
+                return False
+        elif i>'9' or i<'0':
+            return False
+
+    return True
+from math import*
+
+a=input('Enter a: ')
+b=input('Enter b: ')
+angle=input('Enter angle between a and b: ')
+
+if f(a) and f(b) and f(angle):
+    a,b,angle=float(a),float(b),float(angle)
+    radian=radians(angle) #radian=angle*pi/180
+    area=(1/2)*a*b*sin(radian)
+    print(f'Area is: {area} ')
+
+else: print('Enter Valid input')
+
+
+#Task 6
+
+try:
+    num1=float(input('Enter number 1: '))
+    num2=float(input('Enter number 2: '))
+    num3=float(input('Enter number 3: '))
+
+    sum_of_nums=num1+num2+num3
+    product=num1*num2*num3
+    average= sum_of_nums/3
+
+    print(f'Sum:{sum_of_nums}')
+    print(f'Product:{product}')
+    print(f'Average:{average:.2f}')
+
+except: print('Enter integers only')
+
+
+#Task 7
+
+from random import *
+
+num=randint(1000,9999)
+original=num
+print(f'Number:{num}')
+sum1=0
+product=1
+
+while num>0:
+    
+    digit=num%10
+    sum1+=digit**2
+    num=num//10
+
+while original>0:
+
+    digits=original%10
+    product*=digits
+    original//=10
+
+print(f'Results: {sum1} and {product}')
+
+
+
+#Task 8
+from random import*
+
+num1=uniform(6.5,10.5)
+num2=uniform(6.5,10.5)
+print(f'Numbers:{num1:.2f} and {num2:.2f}')
+
+product=num1*num2
+print(f'Product is :{product:.2f}')
+
+
+
+#Task 9
+from random import *
+
+number=randint(10000,99999)
+print(f'Number is: {number}')
+
+while number>=10:
+
+    div=1
+    while number//div>=10:
+        div*=10
+        
+
+    digit=number//div
+    print(digit,digit**2)
+    number=number%div
+
+print(number,number**2)
+
+
+
+#Task 10
+
+from random import*
+from math import*
+
+x=uniform(-1,1)
+y=0
+while y==0:
+    y=uniform(-1,1)
+print(f'X={x:.2f} and Y={y:.2f}')
+
+a=(y**2+1)**(1/2)*sin((x**2)/1+abs(y))
+b=cos(sin(5*x)**2/abs(y)**(1/2))
+
+print(f'a={a:.3f} and b={b:.3f}')
+
+
+#Task 11
+
+def f(x):
+
+    if x=='':
+        return False
+
+    for i in x:
+        if i<'0' or i>'9':
+            return False
+
+    return True
+
+num=input('Enter a number:')
+if f(num):
+    num=int(num)
+
+    while num>=10:
+        
+        div=1
+        while num//div>=10:
+            div*=10
+
+        digit=num//div
+        print(digit,end=',')
+
+        num=num%div
+
+    print(num)
+
+else: print('Enter valid number')
+'''    
+
