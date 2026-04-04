@@ -1,4 +1,177 @@
 #Strings
+#Task1
+def length(x):
+    
+    count=0
+    for i in x:
+        count+=1
+        
+    return count
+
+def my_find(x,sub):
+    index=0
+    
+    while index<=length(x)-length(sub):
+        if x[index:index+length(sub)]==sub:
+            return True
+        index+=1
+        
+    return False
+
+def find_index(x,sub):
+    index=0
+    
+    while index<=length(x)-length(sub):
+        if x[index:index+length(sub)]==sub:
+            return index
+        index+=1
+        
+    return -1
+
+text=input('Enter text: ')
+symbol=input('Enter symbol: ')
+
+if my_find(text,symbol):
+    index=find_index(text,symbol)
+    print(f'The text contains {symbol} at the index of {index}')
+else: print(f'The text does not contain {symbol}')
+
+#Task2
+
+a=input('Text: ')
+b=''
+for i in a:
+    if i=='a':
+        b+='b'
+    elif i=='A':
+        b+='B'
+    elif i=='b':
+        b+='a'
+    elif i=='B':
+        b+='A'
+    else: b+=i
+
+print(b)
+
+#Task3
+def length(x):
+    
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+def counter(x):
+    word=''
+    list1=[]
+
+    for i in range(length(x)):
+        if x[i]!=' ':
+            word+=x[i]
+        else:
+            if word!='':
+                list1.append(word)
+            word=''
+
+    if word!='':
+        list1.append(word)
+
+    count=0
+    for t in list1:
+        count+=1
+
+    return count
+
+text=input('Enter text: ')
+print(counter(text))
+
+#Task4
+
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+def my_split(x):
+    word=''
+    list1=[]
+
+    for i in range(length(x)):
+        if x[i]!=' ':
+            word+=x[i]
+        else:
+            if word!='':
+                list1.append(word)
+                word=''
+
+    if word!='':
+        list1.append(word)
+
+    return list1
+
+text=input('Enter the text: ')
+list2=my_split(text)
+long=list2[0]
+
+for i in list2:
+    if length(long)<length(i):
+        long=i
+
+print(f'The longest word: {long}, length: {length(long)}')
+
+#Task 5
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+def separate(x):
+    word=''
+    my_list=[]
+
+    for i in range(length(x)):
+        if x[i]!=' ':
+            word+=x[i]
+        else:
+            if word!='':
+                my_list.append(word)
+                word=''
+
+    if word!='':
+        my_list.append(word)
+
+    return my_list
+
+name=input("Enter surname, name, father's name: ")
+new=separate(name)
+    
+print(f'{new[1][0]}. {new[2][0]}. {new[0]}') 
+
+#Task 6
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+name=input('Enter the file name: ')
+part=''
+new_list=[]
+for i in range(length(name)):
+    if name[i]!='/':
+        part+=name[i]
+    else:
+        new_list.append(part)
+        part=''
+
+if part!='':
+    new_list.append(part)
+
+for m in new_list:
+    print(m)
+
 #7.	Sətirdə bir simvollar ardıcıllığını digər ardıcıllıq ilə əvəzləyən proqram tərtib edin.
 a=input('Enter sybols:')
 b=input('Neyi evezleyirik: ')
