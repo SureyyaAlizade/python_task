@@ -173,33 +173,33 @@ for m in new_list:
     print(m)
 
 #7.	Sətirdə bir simvollar ardıcıllığını digər ardıcıllıq ilə əvəzləyən proqram tərtib edin.
-a=input('Enter sybols:')
-b=input('Neyi evezleyirik: ')
-c=input('Ne ile evezleyirik: ')
-
-def length(s):
-    
+def length(x):
     count=0
-
-    for ch in s:
+    for i in x:
         count+=1
-
     return count
 
-final=''
-i=0
+def my_rep(x,sub,nsub): # string, neyi, ne ile
+    new=''
+    index=0
 
-while i<=length(a)-length(b):
+    while index<=length(x)-length(sub):
+        if x[index:index+length(sub)]==sub:
+            new+=nsub
+            index+=length(sub)
 
-    if a[i:i+length(b)]==b:
-        final+=c
-        i+=length(b)
+        else:
+            new+=x[index]
+            index+=1
+    new+=x[index:]    #Adds the remaining part at the end
 
-    else:
-        final+=a[i]
-        i+=1
+    return new
 
-print(final)
+text=input('Enter the text: ')
+sub=input('What do you want to replace?: ')
+nsub=input(f'With what do you want to replace "{sub}"?: ')
+
+print(f'Result: {my_rep(text,sub,nsub)}')
 
 #Task 8
 #Daxil edilmis cumlede verilmis simvollari sayin
