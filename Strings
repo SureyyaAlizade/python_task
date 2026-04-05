@@ -203,69 +203,130 @@ print(f'Result: {my_rep(text,sub,nsub)}')
 
 #Task 8
 #Daxil edilmis cumlede verilmis simvollari sayin
+#Task 8
 
-a=input('Enter sybols:')
-b=input('Neyi sayiriq: ')
-
-
-def length(s):
-    
+def length(x):
     count=0
-
-    for ch in s:
+    for i in x:
         count+=1
-
     return count
 
-i=0
-count=0
+def  counter(x,sub):
+    count=0
+    index=0
 
-while i<=length(a)-length(b):
+    while index<=length(x)-length(sub):
+        
+        if x[index:index+length(sub)]==sub:
+            count+=1
+            index+=length(sub)
+        else: index+=1
 
-    if a[i:i+length(b)]==b:
-        count+=1
-        i+=length(b)
+    return count
+text=input('Enter the text: ')
+sub=input('What do you want to count?: ')
 
-    else:
-        i+=1
-
-print(count)
+print(f'Result: {counter(text,sub)}')
 
 # Task 9
-def length(s):
-    count = 0
-    for ch in s:
-        count += 1
+def length(x):
+    count=0
+    for i in x:
+        count+=1
     return count
 
 
 def separate(x):
-    a = []
-    word = ''
+    list1=[]
+    word=''
 
-    for i in range(length(x)):
-        if x[i] != ' ':
-            word += x[i]
+    index=0
+    while index<length(x):
+        
+        if x[index]!=' ':
+            word+=x[index]
+        
         else:
-            if word != '':
-                a.append(word)
-                word = ''
+            if x[index]==' ':
+                if word!='':
+                    list1.append(word)
+                    word=''
+        index+=1
+        
+    if word!='':
+        list1.append(word)
 
-    if word != '':
-        a.append(word)
+    return list1
 
-    return a
+text=input('Enter the text: ')
 
+list2=separate(text)
+for i in range(length(list2)):
+    
+    if list2[i]=='bayram':
+        list2[i]='novruz'
+    elif list2[i]=='Bayram':
+        list2[i]="Novruz"
 
-sent = input('Enter sentence: ')
+new=' '.join(list2)
+print(new)
 
-sent = separate(sent)
+#Task 10
 
-for i in range(len(sent)):
-    if sent[i] == 'bayram' or sent[i] == 'Bayram':
-        sent[i] = 'Novruz'
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
 
-print(" ".join(sent))
+def separate(x):
+    list1=[]
+    word=''
+    index=0
+
+    while index<length(x):
+
+        s=x[index]
+        
+        if  (s>='a' and s<='z') or (s>='A' and s<='Z') or  s in ['ı','ə','ö','ü','ç','ş','Ğ','İ','Ö','Ü','Ç','Ş']:
+            word+=s
+        else:
+            if word!='':
+                list1.append(word)
+                word=''
+            if s!=' ':
+                list1.append(s)
+        
+        index+=1
+
+    if word!='':
+        list1.append(word)
+
+    return list1
+
+def smart_join(list2):
+    result=''
+
+    for i in range(length(list2)):
+        if list2[i] in ['-',',','.','?','!','"']:
+            result+=list2[i]
+        else:
+            if i>0 and not list2[i-1] in ['-','"']:
+                result+=' '
+            result+= list2[i]
+
+    return result
+
+text=input('Enter the text: ')
+list3=separate(text)
+
+for i in range(length(list3)):
+    if list3[i]=='haqqı':
+        list3[i]='sarı'
+    elif list3[i]=='Haqqı':
+        list3[i]='Sarı'
+
+print(smart_join(list3))
 
 #Task 11
 
