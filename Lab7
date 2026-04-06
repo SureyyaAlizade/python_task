@@ -1,0 +1,123 @@
+#Lab 7 tuple
+#Task 1
+#YOL 1
+'''
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+def my_index(x,symbol):
+    ls=[]
+    for i in range(length(x)):
+        if x[i]==symbol:
+            ls+=[i]
+    if ls!=[]:
+        return ls
+    return -1
+
+tup=(4,6,3,9,12,24,24,75,63)
+print(my_index(tup,24))
+
+#Yol 2
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+tup=(4,6,3,9,12,24,24,75,63)
+for i in range(length(tup)):
+    if tup[i]==24:
+        print(i,end=' ')
+       
+#Task2
+Tuple = (4, 6, 3, 9, 12, 24, 24, 76, 63)
+print(Tuple)
+print('3-e bolunenler: ', end=' ')
+for i in Tuple:
+    if i%3==0:
+        print(i,end=' ')
+'''
+#Task 3
+'''
+def is_float(x): #checks if float
+    
+    if x=='':
+        return False
+
+    if x[0]=='-':
+        x=x[1:]
+
+    count=0
+    for i in x:
+        if i=='.':
+            count+=1
+            if count>1:
+                return False
+        elif i<'0' or i>'9':
+            return False
+    if count==1:
+        return True
+    else: return False
+
+def is_num(x):  #checks if integer
+
+    if x=='':
+        return False
+
+    if x[0]=='-':
+        x=x[1:]
+        
+    for i in x:
+        if i<'0' and i>'9':
+            return False
+
+    return True
+            
+    
+            
+lst=[]
+for i in range(5):
+    num=input(f'{i+1}. Enter num: ')
+    if is_float(num):
+        num=float(num)
+    elif is_num(num):
+        num=int(num)
+    num+=5
+    lst+=[num]
+print(lst)
+
+#Reverse()
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+lst=[1,2,3]
+lst1=[]
+k=length(lst)-1
+for i in range(length(lst)):
+    lst1+=[lst[k]]
+    k=k-1
+print(lst1)
+
+#Reverse()
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+lst=[1,2,3,4]
+b=lst[:]
+k=length(lst)-1
+
+for i in range(length(lst)//2):
+    lst[i]=b[k]
+    lst[k]=b[i]
+    k=k-1
+
+print(lst)
