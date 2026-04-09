@@ -373,3 +373,28 @@ for i in list1:
         list2+=[i]
 print(list2)
 
+
+#Task 21
+from random import randint
+
+def length(x):
+    count = 0
+    for y in x:
+        count += 1
+    return count
+
+# 8 ədəd random [-100,100] intervalında
+list1 = [randint(-100, 100) for i in range(8)]
+print("Original list:", list1)
+
+index = 0  
+
+for i in range(length(list1)):
+    if list1[i] > 0:
+        list1[index], list1[i] = list1[i], list1[index]
+        index += 1
+
+print("Reordered list:", list1)
+print("Müsbət ədədlərin sayı:", index)
+    
+
