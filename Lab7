@@ -205,6 +205,8 @@ if count==0:
     print(False)
 
 #Task 9
+#1
+'''
 def length(x):
     count=0
     for i in x:
@@ -233,5 +235,141 @@ while ind<length(lst1):
     ind+=1
 
 print(count)
-'''
+
+#2
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+list1=input().split()
+list2=input().split()
+
+index=0
+count=0
+
+print('Repeating nums: ', end=' ')
+while index<length(list1) and index< length(list2):
+    if list1[index]==list2[index]:
+        print(list1[index], end=' ')
+        count+=1
+    index+=1
+
+print()
+print(f'Total count of the nums: {count}')
+
+
+#Task 10
+#1
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+lst1=input().split()
+index=0
+lst2=[]
+while index<length(lst1):
+    if index!=0:
+        lst2+=[lst1[index]]
+    index+=1
+lst2+=[lst1[0]]
+
+print(lst2)
+    
+#2
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+list1=input().split()
+first=list1[0]
+
+index=0
+while index<length(list1)-1:
+    list1[index]=list1[index+1]
+    index+=1
+
+list1[length(list1)-1]=first
+
+print(list1)
+
+
+#Task 11
+def length(x):
+    count=0
+    for i in x:
+        count+=1
+    return count
+
+list1=input().split()
+list2=input().split()
+
+list3=[]
+index=0
+
+while index<length(list1) and index<length(list2):
+    list3+=[[list1[index],list2[index]]]
+    index+=1
+
+print(list3)
+    
+
+#Task 12
+
+list1=[int(x) for x in input().split()]
+print(f'List = {list1}')
+sum1=0
+count=0
+
+for i in list1:
+    
+    if i%2==0:
+        count+=1
+        break
+    sum1+=i
+   
+
+if count==0:
+    print("No even nums")
+else: print(f'Sum of the odd nums till the first even num: {sum1}')
+
+#Task 13
+
+from random import*
+
+def f(x):
+    for i in range(1,x):
+        if x==i**2:
+            return True
+    return False
+
+N=int(input('Enter the length of list: '))
+list1=[randint(10,50) for i in range(N)]
+print(list1)
+list2=[]
+
+for i in list1:
+    if f(i):
+        list2+=[i]
+
+print(list2)
+
+#Task 14
+
+from random import*
+
+N=int(input('Enter the length of list: '))
+list1=[randint(100,999) for i in range(N)]
+list2=[]
+print(list1)
+
+for i in list1:
+    if abs(i%10-i//10%10)%2==1 and i%10+i//10%10%2==1:
+        list2+=[i]
+print(list2)
 
