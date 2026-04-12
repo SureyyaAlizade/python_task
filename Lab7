@@ -588,7 +588,34 @@ while index<length(ls)-1:
     
 print(ls_ekob)    
 
+#27
+#Reverse()
 
+def length(x):
+    length=0
+    
+    for i in x:
+        length+=1
+        
+    return length
+
+ls=[int(x) for x in input().split()]
+n=length(ls)
+mid=n//2
+
+i=0
+while i<mid//2:
+
+    #1st half
+    ls[i],ls[mid-1-i]=ls[mid-1-i],ls[i]
+
+    #2nd half
+    ls[mid+i],ls[n-1-i]=ls[n-1-i],ls[mid+i]
+
+    i+=1
+    
+    
+print(ls)
 
 
 
