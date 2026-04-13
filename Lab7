@@ -617,6 +617,28 @@ while i<mid//2:
     
 print(ls)
 
+#28
+
+from random import*
+def length(x):
+    length=0
+    for i in x:
+        length+=1
+    return length
+
+def rand(x):
+    i=randint(0,length(x)-1)
+    return x[i]
+
+sentence=[]
+word1=rand(list1)
+word2=rand(list2)
+word3=rand(list3)
+word4=rand(list4)
+word5=rand(list5)
+sentence+=[word1]+[word2]+[word3]+[word4]+[word5]
+
+print(sentence)
 
 
 
