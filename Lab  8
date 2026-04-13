@@ -1,0 +1,64 @@
+#Lab8
+#1
+from random import*
+def length(x):
+    length=0
+    for k in x:
+        length+=1
+    return length
+
+list1=[randint(0,5) for i in range(5)]
+
+print(list1)
+x=int(input("Enter num: "))
+
+i=0;count=0;list2=[]
+while i<length(list1):
+    if list1[i]==x:
+        count+=1
+        list2+=[f'A[{i+1}]={x}']
+    i+=1
+
+if count==0:
+    print('None')
+
+else:
+    print('Tapildi: ',end='')
+    for i in list2:
+        print(i,end=' ')
+
+#3
+
+A=[input() for i in range(5)]
+print(A)
+
+for i in range(len(A)-1):
+    for j in range(len(A)-2,i-1,-1):
+        if A[j+1][2:]<A[j][2:]:
+            A[j],A[j+1]=A[j+1],A[j]
+
+print('Ascending: ')
+for i in A:
+    print(i[2:],end=' ')
+
+
+#4
+A=[]
+while True:
+    ad=input()
+    if ad=='':
+        break
+    A+=[ad]
+
+print(A)
+
+for i in range(len(A)-1):
+    for j in range(len(A)-2,i-1,-1):
+        if A[j+1][4:]<A[j][4:]:
+            A[j],A[j+1]=A[j+1],A[j]
+
+print('Ascending: ')
+for i in A:
+    print(i)
+
+
