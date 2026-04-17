@@ -426,7 +426,7 @@ for i in range(1,N+1):
 
 print(ls)
 
-#Task 19
+#Task 19 (???)
 from math import*
 
 N=[6, 2, 5, 3, 9, 7, 4]
@@ -440,7 +440,7 @@ for i in N:
     ls+=[round(S,2)]
 print(ls)
 
-#Task 20
+#Task 20 (???)
 from math import*
 
 N=[6, 2, 5, 3, 9, 7, 4]
