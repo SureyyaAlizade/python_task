@@ -134,47 +134,122 @@ print()
 
 
 #4
-A=[]
+def length(x):
+    l=0
+    for i in x:
+        l+=1
+    return l
+
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j][4:]>x[j+1][4:]:
+                x[j],x[j+1]=x[j+1],x[j]
+
+    return x
+    
+def sel(x):
+    n=length(x)
+    for i in range(n):
+        idx=i
+        for j in range(i+1,n):
+            if x[j][4:]<x[idx][4:]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    n=length(x)
+    if n<=1:
+        return x
+    pivot=x[n//2]
+    left=[i for i in x if i[4:]<pivot[4:]]
+    mid=[i for i in x if i[4:]==pivot[4:]]
+    right=[i for i in x if i[4:]>pivot[4:]]
+
+    return quick(left)+mid+quick(right)
+
+ls=[]
 while True:
-    ad=input()
-    if ad=='':
+    new=input('Enter name: ')
+    if new=='':
         break
-    A+=[ad]
+    ls+=[new]
 
-print(A)
-
-for i in range(len(A)-1):
-    for j in range(len(A)-2,i-1,-1):
-        if A[j+1][4:]<A[j][4:]:
-            A[j],A[j+1]=A[j+1],A[j]
-
-print('Ascending: ')
-for i in A:
+for i in bub(ls):
     print(i)
+print('----------------')
 
+for i in sel(ls):
+    print(i)
+print('----------------')
+
+for i in quick(ls):
+    print(i)
+'''
 #5
 from random import*
+
 def length(x):
-    length=0
+    l=0
     for i in x:
-        length+=1
-    return length
+        l+=1
+    return l
 
-A=[randint(-100,100) for i in range(10)]
-for i in range(length(A)-1):
-    for j in range(length(A)-2,i-1,-1):
-        if A[j+1]>A[j]:
-            A[j],A[j+1]=A[j+1],A[j]
-print(A) #soldan saga azalan
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j]<x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
 
-mid=length(A)//2
-for i in range(mid//2):
+    return x
+
+def sel(x):
+    n=length(x)
+
+    for i in range(n):
+        idx=i
+        for j in range(i+1,n):
+            if x[j]>x[idx]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    n=length(x)
+    if n<=1:
+        return x
+
+    pivot=x[n//2]
+
+    left=[i for i in x if i>pivot]
+    mid=[i for i in x if i==pivot]
+    right=[i for i in x if i<pivot]
+
+    return quick(left)+mid+quick(right)
+
+def rev(x):  #reverse halves
+    n=length(x)
+    mid=n//2
+   
+    for i in range(mid//2):
     
-    A[i],A[mid-i-1]=A[mid-i-1],A[i]
+        x[i],x[mid-i-1]=x[mid-i-1],x[i]
 
-    A[mid+i],A[length(A)-1-i]=A[length(A)-1-i],A[mid+i]
+        x[mid+i],x[n-1-i]=x[n-1-i],x[mid+i]
 
-print(A)
+
+x=[randint(-100,100) for i in range(10)]
+print(x)
+new=quick(x)
+print(rev(new))
+
 
 #6
 from random import*
