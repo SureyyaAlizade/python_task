@@ -1,45 +1,136 @@
-#Lab8
+#Lab 8 search&sort
 #1
+
 from random import*
+ls=[randint(0,5) for i in range(5)]
+target=int(input('enter num: '))
+loc=1;count=0
+
+for i in ls:
+    if i==target:
+        count+=1
+        print('Found: ',end='')
+        print(f'A[{loc}] = {target}',end=' ')
+    loc+=1
+if count==0:
+    print('Not found')
+   
+#2
+
 def length(x):
     length=0
-    for k in x:
+    for i in x:
         length+=1
     return length
+        
+def my_sum(x):
+    s=0
+    while x>0:
+        s+=x%10
+        x=x//10
+    return s
 
-list1=[randint(0,5) for i in range(5)]
+def bub(x):
+    
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if my_sum(x[j])<my_sum(x[j+1]):
+                x[j],x[j+1]=x[j+1],x[j]
 
-print(list1)
-x=int(input("Enter num: "))
+    return x
 
-i=0;count=0;list2=[]
-while i<length(list1):
-    if list1[i]==x:
-        count+=1
-        list2+=[f'A[{i+1}]={x}']
-    i+=1
+def sel(y):
 
-if count==0:
-    print('None')
+    k=length(y)
 
-else:
-    print('Tapildi: ',end='')
-    for i in list2:
-        print(i,end=' ')
+    for i in range(k):
+        idx=i
+        
+        for j in range(i+1,k):
+            if my_sum(y[j])>my_sum(y[idx]):
+                idx=j
+
+        y[i],y[idx]=y[idx],y[i]
+
+    return y
+
+def quick(z):
+    if length(z)<=1:
+        return z
+    pivot=z[length(z)//2]
+
+    left=[x for x in z if my_sum(x)>my_sum(pivot)]
+    mid=[x for x in z if my_sum(x)==my_sum(pivot)]
+    right=[x for x in z if my_sum(x)<my_sum(pivot)]
+
+    return quick(left)+mid+quick(right)
+
+ls=[int(x) for x in input().split()]
+
+print(bub(ls))
+print(sel(ls))
+print(quick(ls))
+
 
 #3
 
-A=[input() for i in range(5)]
-print(A)
+def length(x):
+    l=0
+    for i in x:
+        l+=1
+    return l
 
-for i in range(len(A)-1):
-    for j in range(len(A)-2,i-1,-1):
-        if A[j+1][2:]<A[j][2:]:
-            A[j],A[j+1]=A[j+1],A[j]
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j][2:]>x[j+1][2:]:
+                x[j],x[j+1]=x[j+1],x[j]
 
-print('Ascending: ')
-for i in A:
+    return x
+
+def sel(x):
+    n=length(x)
+
+    for i in range(n):
+        
+        idx=i
+        
+        for j in range(i+1,n):
+            if x[j][2:]<x[idx][2:]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    
+    n=length(x)
+    if n<=1:
+        return x
+
+    pivot=x[n//2]
+
+    left=[i for i in x if i[2:]<pivot[2:]]
+    mid=[i for i in x if i[2:]==pivot[2:]]
+    right=[i for i in x if i[2:]>pivot[2:]]
+
+    return quick(left)+mid+quick(right)
+
+ls=[input() for i in range(5)]
+for i in bub(ls):
     print(i[2:],end=' ')
+print()
+for i in sel(ls):
+    print(i[2:],end=' ')
+print()
+for i in quick(ls):
+    print(i[2:],end=' ')   
+print()
+
+
 
 
 #4
