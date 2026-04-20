@@ -286,47 +286,392 @@ print(f'Result: {x}')
 print(f'Count of even nums: {idx}')
 
 
-
 #7
 
+from random import*
+
+def length(x):
+    a=0
+    for i in x:
+        a+=1
+    return a
+
+def bub(x):
+    count=0
+    n=length(a)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j]>x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
+                count+=1
+
+    return count
+
+
+def sel(x):
+    n=length(x)
+    count=0
+    for i in range(n):
+        min_index=i
+        for j in range(i+1,n):
+            if x[j]<x[min_index]:
+                min_index=j
+        x[i],x[min_index]=x[min_index],x[j]
+        count+=1
+    return count
+
+a=[randint(0,100) for i in range(10)]
+b=[randint(0,100) for i in range(10)]
+c=[randint(0,100) for i in range(10)]
+d=[randint(0,100) for i in range(10)]
+e=[randint(0,100) for i in range(10)]
+
+average1=(bub(a)+bub(b)+bub(c)+bub(d)+bub(e))/5
+average2=(sel(a)+sel(b)+sel(c)+sel(d)+sel(e))/5
+print(f'Average bubble: {average1}', end=' ')
+print(f'Average selection: {average2}')
+
+#8
 
 from random import*
+
 def length(x):
-    length=0
+    l=0
     for i in x:
-        length+=1
-    return length
+        l+=1
+    return l
 
-def sel(A):
-    c1=0
-    N=length(A)
-    for i in range(N-1):
-        nmin=i
-        for j in range(i+1,N):
-            if A[j]<A[nmin]:
-                nmin=j
-                
-        if i!=nmin:
-            A[i],A[nmin]=A[nmin],A[i]
-            c1+=1
-    return c1
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j]>x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
+
+    return x
+
+def sel(x):
+    n=length(x)
+
+    for i in range(n):
+        idx=i
+        for j in range(i+1,n):
+            if x[j]<x[idx]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    n=length(x)
+    if n<=1:
+        return x
+
+    pivot=x[n//2]
+
+    left=[i for i in x if i<pivot]
+    mid=[i for i in x if i==pivot]
+    right=[i for i in x if i>pivot]
+
+    return quick(left)+mid+quick(right)    
+    
+def binary(ls,target):
+    low=0
+    high=length(ls)-1
+    count=0
+    while low<=high:
+        mid=(low+high)//2
+        if ls[mid]==target:
+            count+=1
+            return count
+        elif ls[mid]<target:
+            low=mid+1
+        else:
+            high=mid-1
+        count+=1
+
+    return count
+
+ls=[randint(0,100) for i in range(10)]
+ls=quick(ls)
+print(ls)
+target=int(input('Enter target: '))
+
+if binary(ls,target)==0:
+    print('Not found')
+
+else: print(f'Count of comparisons : {binary(ls,target)}')
 
 
-def bub(A):
-    c2=0
-    for i in range(length(A)-1):
-        for j in range(length(A)-2,i-1,-1):
-            if A[j+1]<A[j]:
-                A[j],A[j+1]=A[j+1],A[j]
-                c2+=1
-    return c2
+#9
+
+from random import*
+
+def length(x):
+    l=0
+    for i in x:
+        l+=1
+    return l
+
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j]>x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
+
+    return x
+
+def sel(x):
+    n=length(x)
+
+    for i in range(n):
+        idx=i
+        for j in range(i+1,n):
+            if x[j]<x[idx]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    n=length(x)
+    if n<=1:
+        return x
+
+    pivot=x[n//2]
+
+    left=[i for i in x if i<pivot]
+    mid=[i for i in x if i==pivot]
+    right=[i for i in x if i>pivot]
+
+    return quick(left)+mid+quick(right)    
+    
+def binary(ls,target):
+    low=0
+    high=length(ls)-1
+    idx=-1
+    while low<=high:
+        mid=(low+high)//2
+        if ls[mid]==target:
+            idx=mid
+            break
+        elif ls[mid]<target:
+            low=mid+1
+        else:
+            high=mid-1
+
+    count=1
+    if idx!=-1:
+        left=idx-1
+        while left>=0 and ls[left]==target:
+            count+=1
+            left=left-1
+
+        right=idx+1
+        while right<length(ls) and ls[right]==target:
+            count+=1
+            right=right+1
+
+        return count
+
+    else: return -1
+            
+    
+
+ls=[randint(0,10) for i in range(10)]
+ls=quick(ls)
+print(ls)
+target=int(input('Enter target: '))
+
+if binary(ls,target)==-1:
+    print('Not found')
+
+else: print(f'Count of {target} : {binary(ls,target)}')
+
+#10
+from random import*
+
+def length(x):
+    l=0
+    for i in x:
+        l+=1
+    return l
+
+def bub(x):
+    n=length(x)
+    for i in range(n):
+        for j in range(n-1-i):
+            if x[j]>x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
+
+    return x
+
+def sel(x):
+    n=length(x)
+
+    for i in range(n):
+        idx=i
+        for j in range(i+1,n):
+            if x[j]<x[idx]:
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+def quick(x):
+    n=length(x)
+    if n<=1:
+        return x
+
+    pivot=x[n//2]
+
+    left=[i for i in x if i<pivot]
+    mid=[i for i in x if i==pivot]
+    right=[i for i in x if i>pivot]
+
+    return quick(left)+mid+quick(right)    
+    
+def binary(ls,target):
+    low=0
+    high=length(ls)-1
+    while low<=high:
+        mid=(low+high)//2
+        if ls[mid]==target:
+            return ls[mid]
+        elif ls[mid]<target:
+            low=mid+1
+        else:
+            high=mid-1
 
 
-ls1=[randint(0,10) for i in range(5)];c1=ls1[:]
-ls2=[randint(0,10) for i in range(5)];c2=ls2[:]
-print(ls1,ls2)
-a=bub(ls1);b=bub(ls2)
-c=bub(ls2);d=sel(c2)
-print(a,c)
-print(b,d)
-print((a+b)/2,(c+d)/2)
+    if low>length(ls): return ls[high]
+    elif high<0: return ls[low]
+
+    if abs(ls[low]-target)<abs(ls[high]-target):
+        return ls[low]
+
+    elif abs(ls[low]-target)>abs(ls[high]-target):
+        return ls[high]
+
+    else: return ls[high],ls[low]
+    
+    
+
+ls=[randint(0,10) for i in range(10)]
+ls=quick(ls)
+print(ls)
+target=int(input('Enter target: '))
+
+if binary(ls,target)==-1:
+    print('Not found')
+
+if type(binary(ls,target))==tuple:
+    print(f'Nearest to {target}: ',end='')
+    for i in  binary(ls,target):
+        print(i,end=' ')
+
+else: print(f'Nearest to {target} : {binary(ls,target)}')
+
+#11
+
+def length(x):
+    a=0
+    for i in x:
+        a+=1
+    return a
+
+def odd(x):
+    count=0
+    while x>0:
+        num=x%10
+        if num%2!=0:
+            count+=1
+        x=x//10
+    return count
+        
+def even(x):
+    count=0
+    while x>0:
+        num=x%10
+        if num%2==0:
+            count+=1
+        x=x//10
+    return count
+
+def my_sort(x):
+    n=length(x)
+    mid=length(x)//2
+    for i in range(mid):
+        for j in range(mid-1-i):
+            if odd(x[j])>odd(x[j+1]):
+                x[j],x[j+1]=x[j+1],x[j]
+
+    for i in range(n-mid):
+        for j in range(mid,n-1-i):
+            if even(x[j])<even(x[j+1]):
+                x[j],x[j+1]=x[j+1],x[j]
+
+    return x
+
+x=[int(x) for x in input().split()]
+
+print(my_sort(x))
+
+#12
+
+from random import*
+
+def l(x):
+    l=0
+    for i in x:
+        l+=1
+    return l
+
+def digit(x):
+    count=0
+    while x>0:
+        num=x%10
+        if num!=0:
+            count+=1
+        x=x//10
+    return count
+
+def s(x):
+    s=0
+    while x>0:
+        s+=x%10
+        x=x//10
+    return s
+
+def sel(x):
+    n=l(x)
+    mid=n//2
+    for i in range(mid):
+        idx=i
+        for j in range(idx+1,mid):
+            if digit(x[j])<digit(x[idx]):
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    for i in range(mid,n):
+        idx=i
+        for j in range(i+1,n):
+            if s(x[j])>s(x[idx]):
+                idx=j
+
+        x[i],x[idx]=x[idx],x[i]
+
+    return x
+
+x=[randint(0,100) for i in range(10)]
+print(x)
+print(sel(x))
+
+
+
+
