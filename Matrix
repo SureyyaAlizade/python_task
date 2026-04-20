@@ -119,5 +119,55 @@ N,M: 5 5
 0   1   0   1   0   
 1   0   1   0   1   
 '''
+#Matrix
+from random import*
 
+def matrix(n,m):
+   A=[]
+   for i in range(n):
+       A+=[[0]*m]
+       for j in range(m):
+            A[i][j]=randint(0,10)
+   return A        
+       
+
+
+def print_matrix(A):
+    
+    for row in A:
+        for x in row:
+            print(f'{x:4}',end='')
+        print()
+        
+N,M=map(int,input('N,M: ').split())
+A=matrix(N,M)
+print_matrix(A)
+print('-----------------------------------')
+for i in range(N):
+    for j in range(M):
+        if j>=i:
+            A[i][j]=1
+print_matrix(A)
+
+'''
+#Output
+N,M: 8 8
+   8   3   1   6   2   3   5   3
+   1   8   9   7   7   0   7   8
+   7   8   6   8   7   9   7   7
+  10   0   9   1   1   2   7  10
+   0   9  10   5   4   8   7  10
+   9   8   8   0   6   8   3   1
+  10   4   2   8   9   0   2   0
+   9   7   4   5  10   4   8  10
+-----------------------------------
+   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1
+   7   8   1   1   1   1   1   1
+  10   0   9   1   1   1   1   1
+   0   9  10   5   1   1   1   1
+   9   8   8   0   6   1   1   1
+  10   4   2   8   9   0   1   1
+   9   7   4   5  10   4   8   1
+'''
 
