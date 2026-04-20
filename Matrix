@@ -1,4 +1,31 @@
-#Matrix
+#MATRIX
+
+#Creating a matrix
+from random import*
+
+def matrix(n,m):  # n--> row, m--> column
+    
+    A=[]  # empty list to make a list in list (so-called matrix)
+    
+    for i in range(n):
+        A+=[[0]*m]  # filling enery row by the number of columns
+        for j in range(m):
+            A[i][j]=randint(0,10)
+
+    return A
+
+def p(A):
+    for row in A:
+        for i in row:
+            print(f'{i:4}',end='')   # {i:4} tidy format
+        print()  #after each row, leaves an epty line
+
+n,m=map(int,input('Enter n and m: ').split())
+A=matrix(n,m)
+
+p(A)
+
+#----------------------------------------------------------------
 from random import*
 
 def matrix(n,m):
