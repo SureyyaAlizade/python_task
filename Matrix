@@ -77,7 +77,7 @@ N,M: 5 5
 
 
 
-#Matrix
+#Matrix SAHMAT TAXTASI
 from random import*
 
 def matrix(n,m):
@@ -171,3 +171,43 @@ N,M: 8 8
    9   7   4   5  10   4   8   1
 '''
 
+#Matrix  #QUM SAATI
+from random import*
+
+def matrix(n,m):
+   A=[]
+   for i in range(n):
+       A+=[[0]*m]
+       for j in range(m):
+            if i<=j and i+j<n:
+                A[i][j]=1
+            elif i==j or i+j==n-1:
+                A[i][j]=1
+
+            elif i>=j and i+j>=n-1:
+                A[i][j]=1
+
+        return A        
+       
+
+
+def print_matrix(A):
+    
+    for row in A:
+        for x in row:
+            print(f'{x:4}',end='')
+        print()
+        
+N,M=map(int,input('N,M: ').split())
+A=matrix(N,M)
+print_matrix(A)
+
+'''
+#Output
+N,M: 5 5
+   1   1   1   1   1
+   0   1   1   1   0
+   0   0   1   0   0
+   0   1   1   1   0
+   1   1   1   1   1
+'''
