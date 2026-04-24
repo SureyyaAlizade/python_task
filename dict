@@ -80,9 +80,53 @@ for i in dict_:
 print(dict_new)
 
 
+#2
+users={
+    'maximus':'pass1',
+    'asterix':'pass2',
+    'starrex':'pass1'
+    }
 
+name=input('Enter username: ')
+lamp=0
+for user in users:
+    if name==user:
+        password=input('Enter the passkey: ')
+        while password!=users[user]:
+            password=input('Enter correct password: ')
 
+        else:
+            print(f'Welcome {user}!')
+            lamp=1
+            break
+    else:
+        continue
+if lamp==0:
+    print('Invalid name!')
 
+#3
+def length(x):
+    l=0
+    for _ in x:
+        l+=1
+    return l
+        
+def count(text,ltt):
+    count=0
+    for i in text:
+        if i==ltt:
+            count+=1
+    return count
+        
+
+def dictionary(x):
+    dict_={}
+    for i in x:
+        dict_[i]=count(x,i)
+    return dict_
+
+text=input()
+print(dictionary(text))
 
 
 
