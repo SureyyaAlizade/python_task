@@ -1,0 +1,48 @@
+'''dict_={}
+dict_={'Aze':'Baku','Italy':'Rome','Spain':'Madrid'}
+for i in dict_:
+    print(i)
+
+print('-------------------------------')
+
+for j in dict_:
+    print(dict_[j])
+
+dict_['Spain']='Barcelona'
+print('-------------------------------')
+print(dict_)
+
+dict_['Hungary']='Budapest'
+print('-------------------------------')
+print(dict_)
+print('-------------------------------')
+dict_new={
+    'Aze':{
+        'paytaxt':'Baki',
+        'ehali':50000,
+        'sahe':80000},
+    'Italy':{
+        'paytaxt':'Rome',
+        'ehali':100000,
+        'sahe':120000},
+    'Spain':{
+        'paytaxt':'Madrid',
+        'ehali':90000,
+        'sahe':50000}
+        }
+print(dict_new)
+print(25*'-')
+s=0
+for i in dict_new:
+    print(i)
+    print(25*'-')
+    print(dict_new[i])
+    print(25*'-')
+    for j in dict_new[i]:
+        if j=='ehali':
+          s+=dict_new[i][j]
+
+print(s)
+'''
+
+
