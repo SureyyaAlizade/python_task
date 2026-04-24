@@ -45,4 +45,68 @@ for i in dict_new:
 print(s)
 '''
 
+#Dictionary Tasks
+# 1
+dict_={
+    'Asia': {
+        'population':4000000000,
+        'area':3000000},
+    'Africa':{
+        'population':1200000000,
+        'area':29000000},
+    'Europe':{
+        'population':700000000,
+        'area':22000000},
+    'North America':{
+        'population':580000000,
+        'area':21000000},
+    'South America':{
+        'population':420000000,
+        'area':17000000},
+    'Antarctica':{
+        'population':0,
+        'area':13000000}
+    }
+
+dict_new={}
+for i in dict_:
+    for j in dict_[i]:
+        if j=='population' and dict_[i][j]>1000000000:
+            print(i)
+            dict_new[i]=dict_[i][j]
+            #dict_new[i]=dict_[i]
+          #bu halda: {'Asia': {'population': 4000000000, 'area': 3000000}, 'Africa': {'population': 1200000000, 'area': 29000000}}
+
+print(dict_new)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
