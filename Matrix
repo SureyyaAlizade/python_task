@@ -238,3 +238,412 @@ N,M: 5 5
    0   1   1   1   0
    1   1   1   1   1
 '''
+
+
+##Tasks
+'''
+            
+#Comprehension
+n,m=map(int,input('Enter  n,m: ').split())
+A=[[randint(0,10) for j in range(m)] for i in range(n)]
+for row in A:
+    for i in row:
+        print(f'{i:4}',end=' ')
+    print()
+
+
+##1
+from random import*
+
+def length(x):
+    length=0
+    for i in x:
+        length+=1
+    return length
+
+n,m=map(int,input('Enter row and column: ').split())
+X=[[randint(-10,10) for j in range(m)] for i in range(n)]
+
+for row in X:
+    for i in row:
+        print(f'{i:4}',end=' ')
+    print()
+    
+##a)
+my_sum=0
+for row in X:
+    for i in row:
+        my_sum+=abs(i)
+print(f'Sum: {my_sum}')
+
+##b)
+pro=1
+for row in X:
+    for i in row:
+        pro*=i**2
+print(f'Product: {pro}')
+'''
+'''
+##c)         # bu hisseni ayrica isledin
+pro=1
+for k in range(n):
+    for j in range(m):
+        if k==0 or k==n-1:
+            print(f'{'*':>4}',end=' ')  # ulduzlari sag terefe yigiriq
+
+        else:
+            pro*=X[k][j]
+            print(f'{X[k][j]:4}',end=' ')
+    print()
+print(f'Product: {pro}')
+'''
+'''
+##d)
+my_sum=0
+my_min=X[0][0]
+
+for i in range(n):
+    for j in range(m):
+        if my_min>X[i][j]:
+            my_min=X[i][j]
+            index_min=j
+        
+for i in range(n):
+    my_sum+=X[i][index_min]
+
+print(my_sum)
+            
+##e)
+
+# Left
+sum_left=0
+left=[]
+for i in range(n):
+    for j in range(m):
+        if i==j:
+            left+=[X[i][j]]
+            sum_left+=X[i][j]
+
+# Right
+sum_right=0
+right=[]
+for i in range(n):
+    for j in range(m):
+        if i+j==n-1:
+            right+=[X[i][j]]
+            sum_right+=X[i][j]
+
+print(f'Left: {left}   sum:{sum_left}')
+print(f'Right: {right}   sum:{sum_right}')
+'''
+#2
+'''
+from random import*
+def length(x):
+    length=0
+    for _ in x:
+        length+=1
+    return length
+
+def p(X):
+    for row in X:
+        for i in row:
+            print(f'{i:4}',end=' ')
+        print()
+        
+n=int(input('Enter value: '))
+A=[[randint(-10,10) for _ in range(n)] for _ in range(n)]
+B=[[randint(-10,10) for _ in range(n)] for _ in range(n)]
+print('A matrix:')
+p(A)
+print('B matrix')
+p(B)
+
+##a)
+
+C=[]
+for i in range(n):
+    C+=[[0]*n]
+    for j in range(n):
+        new=A[i][j]+B[i][j]
+        C[i][j]=new
+
+print('C matrix:')
+p(C)
+
+##b)
+
+k,m=map(int,input('Enter k,m: ').split())
+
+C=[]
+l_A=[]
+l_B=[]
+
+for i in range(n):
+    if i==k-1:
+        for j in range(n):
+            l_A+=[A[i][j]]
+
+    for j in range(n):
+        if j==m-1:
+            l_B+=[B[i][j]]
+
+for i in range(length(l_A)):
+    C+=[l_A[i]*l_B[i]]
+
+print(C)
+        
+##c)
+k=int(input('Enter k: '))
+B=[]
+
+A_k=[]
+dia=[]
+for i in range(n):
+    for j in range(n):
+        if i==k-1:  # index sira nomresinden 1 vahid azdir
+            A_k+=[A[i][j]]
+
+        if i==j:
+            dia+=[A[i][j]]
+
+for i in range(length(dia)):
+    B+=[A_k[i]/dia[i]]
+
+print(f'Massiv: {B}')
+    
+
+
+##d)
+from random import*
+def length(x):
+    length=0
+    for _ in x:
+        length+=1
+    return length
+
+def p(X):
+    for row in X:
+        for i in row:
+            print(f'{i:4}',end=' ')
+        print()
+        
+n=int(input('Enter value (n): '))
+A=[[randint(-10,10) for _ in range(n)] for _ in range(n)]
+p(A)
+print('----------------------------------')
+dia_sum=0
+for i in range(n):
+    for j in range(n):
+        if i==j:
+            dia_sum+=A[i][j]
+
+for i in range(n):
+    if (i+1)%2==0:   # Burada cut nomreli deyende index nezerde tutulur?
+        for j in range(n):
+            A[i][j]//=dia_sum   # cavab hedsiz uzun alinmasin deye bolunmeden alinan tam hisse
+
+p(A)
+
+
+##e)
+B=[]
+for i in range(n):
+    my_sum=0
+    for j in range(n):
+        my_sum+=A[i][j]
+    B+=[my_sum]
+
+print(f'Sum: {B}')
+        
+##f)
+
+B=[]
+for j in range(n):
+    pro=1
+    for i in range(n):
+        pro*=A[i][j]
+    B+=[pro]
+
+print(f'Product: {B}')
+
+# 3
+
+from random import*
+def length(x):
+    length=0
+    for _ in x:
+        length+=1
+    return length
+
+def print_matrix(X):
+    for row in X:
+        for i in row:
+            print(f'{i:4}', end=' ')
+        print()
+        
+n=int(input('Enter value (n): '))
+X=[[randint(10,100) for _ in range(n)] for _ in range(n)]
+print_matrix(X)
+##a)
+my_max=X[0][0]
+index_max=[0,0]
+for i in range(n):
+    for j in range(n):
+        if my_max<X[i][j]:
+            my_max=X[i][j]
+            index_max=[i,j]
+
+print(f'Max element and its index: {my_max} , {index_max}')
+               
+##b)
+for i in range(n//2):
+    
+## Sutunlari butovlukde reverse edir
+##    for j in range(n//2):
+##        X[i][j],X[i][n-1-j]=X[i][n-1-j],X[i][j]
+    
+    X[i],X[n-1-i]=X[n-1-i],X[i]  #Sadece matris elementlerini [[1],[2]] reverse edirik
+    
+print('New matrix with reversed columns: ')
+print_matrix(X)
+
+##c)
+
+def pronic(x):
+    idx=0
+    while idx<x:
+        if idx*(idx+1)==x:
+            return True
+        idx+=1
+    return False
+
+ls=[]
+
+for i in range(n):
+    if i%2==0:
+        for j in range(n):
+            if pronic(X[i][j]):
+                ls+=[X[i][j]]
+
+if length(ls)!=0:
+    print(f'Pronic nums: {ls}')
+else: print('No pronic nums in even rows')    
+
+##d)
+
+def prime(x):
+    if x<2:
+        return False
+    
+    count=0
+    for i in range(1,x+1):
+        if x%i==0:
+            count+=1
+
+    if count==2:
+        return True
+    else: return False
+
+ls=[]
+
+for i in range(n):
+    for j in range(n):
+        if i==j or i+j==n-1:
+            if prime(X[i][j]):
+                ls+=[X[i][j]]
+
+if length(ls)==0:
+    print('Not found')
+else: print(ls)
+'''
+# 4
+
+
+from random import*
+def length(x):
+    l=0
+    for _ in x:
+        l+=1
+    return l
+
+def print_matrix(X):
+    for row in X:
+        for i in row:
+            print(f'{i:4}', end=' ')
+        print()
+
+n=int(input('Enter value (n): '))
+X=[[randint(10,99) for _ in range(n)] for _ in range(n)]
+print_matrix(X)
+'''
+#a
+def avg(X):
+    sum_num=0
+    
+    for row in X:
+        for i in row:
+            sum_num+=i
+            
+    avg=sum_num/(length(X)**2)
+    return avg
+
+
+
+for i in range(n):
+    for j in range(n):
+        if X[i][j]<avg(X):
+            X[i][j]=0
+        else: X[i][j]=255
+
+print_matrix(X)
+'''
+'''
+#b
+for i in range(n):
+    for j in range(n):
+        
+        if i<j:
+            
+            if X[i][j]<50:
+                X[i][j]=0
+                
+            elif X[i][j]>50:
+                X[i][j]=255
+
+print_matrix(X)
+
+#c
+for i in range(n):
+    for j in range(n):
+        if i<j:
+            X[i][j]=0
+'''
+#d
+for i in range(n):
+    for j in range(n//2):
+            X[i][j],X[i][n-1-j]=X[i][n-1-j],X[i][j]
+print('--------------------------------')
+print_matrix(X)
+
+#e
+for i in range(n//2):
+    X[i],X[n-1-i]=X[n-1-i],X[i]
+
+print('--------------------------------')
+print_matrix(X)
+
+#f ---> 90 derece saga
+
+for i in range(n):
+    for j in range(i+1,n):
+        X[i][j],X[j][i]=X[j][i],X[i][j]
+
+for i in range(n):
+    for j in range(n//2):
+        X[i][j],X[i][n-1-j]=X[i][n-1-j],X[i][j]
+
+print('--------------------------------')
+print_matrix(X)
+
+
