@@ -211,7 +211,7 @@ else: print('NO level')
 #Version 2
 #TASK 1
 '''
-x, y = map(int, input('Enter (x,y): ').split(','))
+x, y = map(float, input('Enter (x,y): ').split(','))
 
 if x > 0 and y >= 0.5 and y <= 6*x**2 and y <= abs(2*x) and x**2 + y**2 <= 1:
     print('Oblasta daxil')
