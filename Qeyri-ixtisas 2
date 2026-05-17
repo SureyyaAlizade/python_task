@@ -168,6 +168,119 @@ Number=int(input('Enter num: '))
 
 if count_binary(Number)==octal_digit(Number):
     print('Balanced')
-
 else: print('Not balanced')
 '''
+
+
+
+
+
+#VERSION 2
+#Task 1
+'''
+from math import*
+
+x, y = map(float, input('Enter x,y: ').split())
+if x**2 + y**2 <= 30 and y <= 2*x - 3 and y >= sin(x):
+    print('Oblasta daxil')
+elif y <= sin(x) and x >= -5 and y >= -3 and y >= 2*x - 3:
+    print('Oblasta daxil')
+else: print('Oblasta daxil deyil')
+
+#Task 2 ve 3 quiz 1 qi-de var
+
+#Task 4
+def length(x):
+    l = 0
+    while x > 0:
+        x //= 10
+        l += 1
+    return l
+
+def armstrong(x):
+    k = length(x)
+    my_sum = 0
+    temp = x
+    while temp > 0:
+        digit = temp%10
+        my_sum += digit**k
+        temp //= 10
+
+    return my_sum == x
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for i in range(start, stop + 1):
+    if armstrong(i):
+        print(i)
+'''
+'''
+#Task 5
+
+def octal(x):
+    octal = 0
+    pro = 1
+    while x > 0:
+        digit = x%8
+        octal += digit*pro
+        pro *= 10
+        x //= 8
+
+    num_sum = 0
+    temp = octal
+    while temp > 0:
+        num_sum += temp%10
+        temp //= 10
+
+    return num_sum
+
+def binary(x):
+    binary = 0
+    pro = 1
+    while x > 0:
+        digit = x%2
+        binary += digit*pro
+        pro *= 10
+        x //= 2
+
+    c1 = 0
+    temp = binary
+    while temp > 0:
+        digit = temp % 10
+        if digit == 1:
+            c1 += 1
+
+        temp //= 10
+
+    return c1
+
+num = int(input('Enter num: '))
+if octal(num) == binary(num):
+    print('Balanced')
+else: print('Not balanced')
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
