@@ -1,0 +1,121 @@
+#Task 1
+'''
+from math import*
+x, y = map(float, input('ENter x, y: ').split())
+if x**2 + y**2 <= 20 and y <= x+1 and y >= cos(x):
+    print('oblasta daxil')
+elif y <= cos(x) and x >= 0:
+    print('oblasta daxildir')
+else: print('oblasta daxil deyil')
+'''
+'''
+#Task 2
+n = int(input('Enter count: '))
+for i in range(n):
+    num = int(input('Enter num: '))
+    
+    if num <= 0:
+        break
+    
+    cut_bolen_cem = 0
+    i = 1
+    while i <= num:
+        if num%i == 0 and i%2 == 0:
+            cut_bolen_cem += i
+        i += 1
+
+    print(cut_bolen_cem)
+'''
+'''
+#Task 3
+
+def hasil(x):
+    addim = 1
+    while x >= 10:
+        
+        temp = x
+        print(f'Addim {addim}:',end = ' ')
+
+        div = 1
+        while temp//div >= 10:
+            div *= 10
+
+        hasil = 1
+        while temp > 0:
+            digit = temp//div
+            if digit != temp%10:
+                print(f'{digit} * ', end = '')
+            hasil *= digit
+            temp %= div
+            div //= 10
+        print(f'{digit} = {hasil}')
+        print()
+            
+        addim += 1
+        x = hasil
+
+    print(f'Yekun = {x}')
+    return f'Addim sayi = {addim}'
+
+num = int(input('Enter num: '))
+print(hasil(num))
+'''
+'''
+#Task 4
+def guclu(x):
+    temp = x
+    fakt_cem = 0
+
+    while temp > 0:
+        digit = temp%10
+        fakt = 1
+        for i in range(1, digit+1):
+            fakt *= i
+        fakt_cem += fakt
+        temp //= 10
+
+    return fakt_cem == x
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for x in range(start, stop+1):
+    if guclu(x):
+        print(x)
+'''
+'''
+#Task 5
+def onluq(x):
+    cem = 0
+    while x > 0:
+        digit = x%10
+        cem += digit
+        x //= 10
+
+    return cem%2 == 0
+
+def binary(x):
+    temp = x
+    binary = 0
+    pro = 1
+    while temp > 0:
+        digit = temp%2
+        binary += digit*pro
+        pro *= 10
+        temp //= 2
+
+    temp = binary
+    say = 0
+    while temp > 0:
+        if temp % 10 == 1:
+            say += 1
+        temp //= 10
+
+    return say%2 == 0
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for i in range(start, stop+1):
+    if onluq(i) and binary(i):
+        print(i)
+        
+'''
