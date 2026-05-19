@@ -1,0 +1,131 @@
+#Task 1
+'''
+x, y = map(float, input('Enter x,y: ').split())
+
+if y >= x and y >= 1/x and x > 0:
+    print('Oblasta daxil')
+elif y <= x and y <= 1/x and x < 0:
+    print('Oblasta daxil')
+else: print('Oblasta daxil deyil')
+
+#Task 2
+num = int(input('Enter num: '))
+temp = num
+my_min = temp%10
+while temp > 0:
+    digit = num%10
+    if my_min > digit:
+        my_min = digit
+    temp //= 10
+
+temp = num
+my_max = temp%10
+while temp > 0:
+    digit = temp%10
+    if my_max < digit:
+        my_max = digit
+    temp //= 10
+
+max_eded = 900 + my_max*10 + my_min
+print(max_eded)
+
+#Task 3
+def polindrom(x):
+    rev = 0
+    temp = x
+    while temp > 0:
+        digit = temp%10
+        rev = rev*10 + digit
+        temp //= 10
+
+    return rev == x
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for i in range(start, stop+1):
+    if polindrom(i) and polindrom(i**2):
+        print(i)
+
+
+#Task 4
+def prime(x):
+    if x < 2:
+        return False
+    elif x == 2:
+        return True
+    elif x%2 == 0:
+        return False
+
+    for i in range(3, int(x**0.5) + 1, 2):
+        if x%i == 0:
+            return False
+
+    return True
+
+def decimal(x):
+    new = 0
+    temp = x
+    count = 0
+    while temp > 0:
+        count += 1
+        temp //= 10
+
+    temp = x
+    for i in range(count):
+        digit = temp%10
+        new += digit*2**i
+        temp //= 10
+
+    return new
+    
+num = int(input('Enter binary num: '))
+print(prime(decimal(num)))
+
+#Task 5
+
+def kv(x):
+    for i in range(int(x**0.5)+1):
+        if i**2 == x:
+            return True
+
+    return False
+
+def harshad(x):
+    s = 0
+    temp = x
+    while temp > 0:
+        digit = temp % 10
+        s += digit
+        temp //= 10
+
+    new = x/s
+    return kv(new)
+
+start = int(input("Enter start: "))
+stop = int(input("Enter stop: "))
+
+for i in range(start, stop+1):
+    if harshad(i):
+        print(i)
+
+'''    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
