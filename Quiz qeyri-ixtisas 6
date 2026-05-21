@@ -1,0 +1,198 @@
+#Task 1
+'''
+from random import*
+def matrix(n, m):
+    A = []
+    for i in range(n):
+        A += [[0]*m]
+        for j in range(m):
+            A[i][j] = randint(0, 10)
+
+    return A
+
+def print_mat(A):
+    for row in A:
+        for i in row:
+            print(f'{i:4}', end = '')
+
+        print()
+
+
+def max_(A):
+    max_ = A[0][0]
+    for i in range(n):
+        for j in range(n):
+            if i == 0 or i == n-1:
+                    if max_ < A[i][j]:
+                        max_ = A[i][j]
+
+                    else:
+                        if max_ < A[i][0]:
+                            max_ = A[i][0]
+
+                        if max_ < A[i][n-1]:
+                            max_ = A[i][n-1]
+
+    return max_
+
+def min_(A):
+    min_ = A[0][0]
+    for i in range(n):
+        for j in range(n):
+            if i == j or i + j == n - 1:
+                if min_ > A[i][j]:
+                    min_ = A[i][j]
+
+    return min_
+
+n = int(input('Enter n: '))
+A = matrix(n, n)
+print_mat(A)
+
+sum_ = min_(A) + max_(A)
+print(f'{min_(A)}+{max_(A)} = {sum_}')
+'''
+'''
+#Task 2
+from random import*
+ls = [randint(0, 10) for i in range(7)]
+print(ls)
+
+a1 = ls[0]
+a2 = ls[1]
+if a1<a2:
+    min1 = a1
+    min2 = a2
+else:
+    min1 = a2
+    min2 = a1
+
+for i in ls:
+    if i < min1:
+        min2 = min1
+        min1 = i
+
+    elif i < min2 and i != min1:
+        min2 = i
+
+print(min1, min2)
+'''
+'''
+#Task 3
+string = input('Enter string: ')
+new = ''
+bad = ['BAD', 'Bad', 'bAd', 'baD', 'bad', 'BaD']
+i = 0
+n = len(string)
+m = len('bad')
+while i < n:
+    if string[i:i + m] in bad:
+        new += 'good'
+        i += m
+        continue
+
+    elif '0' <= string[i] <= '9':
+            new += '*'*int(string[i])
+
+    else: new += string[i]
+
+    i += 1
+
+print(new)
+'''
+'''
+#Task 4
+def sel(ls):
+    n = len(ls)
+    for i in range(n):
+        idx = i
+        for j in range(i+1, n):
+            if ls[idx] < ls[j]:
+                idx = j
+
+        ls[i], ls[idx] = ls[idx], ls[i]
+
+    return ls
+
+num = int(input('Enter num: '))
+temp = num
+ls = []
+while temp > 0:
+    ls += [temp%10]
+    temp //= 10
+
+ls = sel(ls)
+new = 0
+for i in ls:
+    new = new*10 + i
+print(new)
+dif = new - num
+if dif%2 == 0:
+    print(True)
+else: print(False)
+'''
+'''
+#Task 5
+def digit(x):
+    return '0' <= x <= '9'
+
+def ch(x):
+    return 'a' <= x <= 'z' or 'A' <= x <= 'Z' 
+
+def my_split(x):
+    ls = []
+    i = 0
+    n = len(x)
+    word = ''
+    while i < n:
+        if ch(x[i]) or digit(x[i]):
+            word += x[i]
+
+        else:
+            if word != '':
+                ls += [word]
+                word = ''
+
+        i += 1
+
+    if word != '':
+        ls += [word]
+
+    return ls
+
+def hasil(s):
+    hasil = 1
+    var = 0
+    for _ in s:
+        if digit(_):
+            var = 1
+            hasil *= int(_)
+
+    if var == 0:
+        hasil = 0
+
+    return hasil
+
+string = input('Enter string: ')
+ls = my_split(string)
+
+n = len(ls)
+for i in range(n):
+    for j in range(n-1-i):
+        if len(ls[j]) != len(ls[j+1]):
+            if hasil(ls[j]) > hasil(ls[j+1]):
+                ls[j], ls[j+1] = ls[j+1], ls[j]
+
+        else:
+            if len(ls[j]) > len(ls[j+1]):
+                ls[j], ls[j+1] = ls[j+1], ls[j]
+
+print(ls)
+'''
+
+
+
+
+
+
+            
