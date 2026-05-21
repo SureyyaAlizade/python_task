@@ -1,0 +1,109 @@
+#Task 1
+'''
+x, y = map(float, input('Enter x,y: ').split())
+if (y-4)**2 + (x+2)**2 <= 0.5 or (y-4)**2 + (2-x)**2 <= 0.5:
+    print('Oblasta daxil')
+
+elif y <= (x/2)**2 and y <= 2:
+    print('Oblasta daxil ')
+else:
+    print('Oblasta daxil deyil')
+
+
+#Task 2
+def neon(x):
+    kv = x**2
+    s = 0
+    while kv > 0:
+        digit = kv%10
+        s += digit
+        kv //= 10
+
+    return s == x
+
+ls = []
+while True:
+    num =int(input('Enter num: '))
+    if num <= 0:
+        break
+    ls += [num]
+
+neon_list = []
+for i in ls:
+    if neon(i):
+        neon_list += [i]
+
+print(ls)
+print(neon_list)
+
+#Task 3
+ls = []
+length = int(input('Enter length: '))
+for i in range(length):
+    num = int(input('Enter coded elements: '))
+    ls += [num]
+
+my_min = ls[0]
+for i in ls:
+    if my_min > i:
+        my_min = i
+
+recover = []
+for i in ls:
+    recover += [i-my_min//2]
+print(recover)
+
+#Task 4
+def bol(x):
+    cem = 0
+    for i in (1, x):
+        if x%i == 0:
+            cem += i
+
+    return x < i
+
+ls = []
+length = int(input('Enter length: '))
+for i in range(length):
+    num = int(input('Enter coded elements: '))
+    ls += [num]
+
+bol_ededler = []
+for i in ls:
+    if bol(i):
+        bol_ededler += [i]
+
+print(bol_ededler)
+'''
+'''
+#Task 5
+def length(x):
+    l = 0
+    while x > 0:
+        x //= 10
+        l += 1
+    return l
+
+def pille(x):
+    temp = x
+
+    if length(temp) < 2:
+        return False
+    
+    while temp >= 10:
+        d1 = temp%10
+        d2 = temp//10%10
+
+        if abs(d1-d2) != 1:
+            return False
+        
+        temp //= 10
+
+    return True
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for i in range(start, stop+1):
+    if pille(i):
+        print(i)
+'''       
