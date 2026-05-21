@@ -1,1 +1,56 @@
+#Zincirvari azalan veya zincirvari artan eded
+def chain(x):
+    temp = x
+    artan = False
+    azalan = False
+    beraber = False
+    while temp >= 10:
+        d1 = temp%10
+        d2 = temp//10%10
+
+        if d1 > d2:
+            artan = True        
+
+        elif d1 == d2:
+            beraber = True
+            
+        else:
+            azalan = True
+
+        temp //= 10
+
+    if beraber:
+        return False
+
+    if artan and azalan:
+        return False
+
+    if (artan and not azalan) or (azalan and not artan):
+        return True            
+        
+
+start = int(input('Enter start: '))
+stop = int(input('Enter stop: '))
+for i in range(start, stop+1):
+    if chain(i):
+        print(i)
+
+
+
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
